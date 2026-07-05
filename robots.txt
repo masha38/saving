@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://masha38.github.io/saving/sitemap.xml

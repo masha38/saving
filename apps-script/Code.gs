@@ -121,10 +121,17 @@ function safe_(value) {
 
 function response_(ok, message) {
   const color = ok ? '#102b4e' : '#9b2c2c';
+  const payload = JSON.stringify({
+    source: 'wealth-study-application',
+    ok: ok,
+    message: message
+  }).replace(/</g, '\\u003c');
   return HtmlService.createHtmlOutput(
     '<!doctype html><html lang="ko"><head><meta charset="utf-8"></head>' +
     '<body style="font-family:sans-serif;color:' + color + '">' +
-    '<p>' + escapeHtml_(message) + '</p></body></html>'
+    '<p>' + escapeHtml_(message) + '</p>' +
+    '<script>window.parent.postMessage(' + payload + ', "*");<\/script>' +
+    '</body></html>'
   );
 }
 

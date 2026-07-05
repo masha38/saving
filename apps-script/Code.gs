@@ -21,7 +21,7 @@ function doPost(e) {
     const data = {
       requestId: clean_(p.request_id, 80) || Utilities.getUuid(),
       name: clean_(p.name, 40),
-      phone: clean_(p.phone, 30),
+      phone: formatPhone_(p.phone),
       interest: clean_(p.interest, 80),
       consent: clean_(p.consent, 10),
       pageUrl: clean_(p.page_url, 500),
@@ -93,13 +93,24 @@ function ensureHeaders_(sheet) {
 
 function validate_(data) {
   if (!data.name) throw new Error('성함을 입력해 주세요.');
-  if (!/^[0-9+()\-\s]{8,20}$/.test(data.phone)) throw new Error('연락처를 확인해 주세요.');
+  if (!/^01[016789]-\d{3,4}-\d{4}$/.test(data.phone)) throw new Error('연락처를 확인해 주세요.');
   if (!data.interest) throw new Error('관심 분야를 선택해 주세요.');
   if (data.consent !== '동의') throw new Error('개인정보 수집·이용 동의가 필요합니다.');
 }
 
 function clean_(value, maxLength) {
   return String(value || '').trim().slice(0, maxLength);
+}
+
+function formatPhone_(value) {
+  const digits = String(value || '').replace(/\D/g, '');
+  if (/^01[016789]\d{7}$/.test(digits)) {
+    return digits.replace(/^(01[016789])(\d{3})(\d{4})$/, '$1-$2-$3');
+  }
+  if (/^01[016789]\d{8}$/.test(digits)) {
+    return digits.replace(/^(01[016789])(\d{4})(\d{4})$/, '$1-$2-$3');
+  }
+  return clean_(value, 30);
 }
 
 // 셀 수식으로 해석될 수 있는 사용자 입력을 일반 텍스트로 저장합니다.

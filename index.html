@@ -364,11 +364,18 @@
     const studyForm = document.getElementById('studyForm');
     const resultFrame = document.getElementById('applicationResult');
     const submitButton = studyForm.querySelector('button[type="submit"]');
+    const phoneInput = document.getElementById('phone');
     const successModal = document.getElementById('successModal');
     const successClose = document.getElementById('successClose');
     let submissionInFlight = false;
 
     function showToast(message){ toast.textContent=message; toast.classList.add('show'); setTimeout(()=>toast.classList.remove('show'),2800); }
+    function formatPhone(value){
+      const digits=value.replace(/\D/g,'').slice(0,11);
+      if(digits.length===11) return digits.replace(/^(01[016789])(\d{4})(\d{4})$/,'$1-$2-$3');
+      if(digits.length===10) return digits.replace(/^(01[016789])(\d{3})(\d{4})$/,'$1-$2-$3');
+      return value;
+    }
     function openSuccessModal(){ successModal.classList.add('show'); successModal.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; successClose.focus(); }
     function closeSuccessModal(){ successModal.classList.remove('show'); successModal.setAttribute('aria-hidden','true'); document.body.style.overflow=''; submitButton.focus(); }
     function requestId(){ return window.crypto?.randomUUID?.() || `req-${Date.now()}-${Math.random().toString(16).slice(2)}`; }
@@ -383,7 +390,9 @@
       Object.entries(values).forEach(([name,value])=>{ studyForm.elements[name].value=value; });
     }
     fillTrackingFields();
+    phoneInput.addEventListener('blur',()=>{ phoneInput.value=formatPhone(phoneInput.value); });
     studyForm.addEventListener('submit',e=>{
+      phoneInput.value=formatPhone(phoneInput.value);
       if(APPS_SCRIPT_WEB_APP_URL.startsWith('PASTE_')){
         e.preventDefault();
         showToast('Apps Script 웹앱 URL을 먼저 설정해 주세요.');

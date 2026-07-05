@@ -155,6 +155,18 @@
 
     .toast{position:fixed;z-index:50;left:50%;bottom:30px;transform:translate(-50%,20px);padding:15px 20px;border-radius:10px;background:#fff;color:var(--ink);box-shadow:0 15px 45px rgba(0,0,0,.24);opacity:0;pointer-events:none;transition:.25s}
     .toast.show{opacity:1;transform:translate(-50%,0)}
+    .success-modal{position:fixed;z-index:80;inset:0;display:grid;place-items:center;padding:22px;background:rgba(4,14,28,.72);backdrop-filter:blur(8px);opacity:0;visibility:hidden;transition:.25s}
+    .success-modal.show{opacity:1;visibility:visible}
+    .success-card{position:relative;width:min(100%,440px);padding:42px 34px 32px;border:1px solid rgba(216,173,88,.34);border-radius:24px;background:linear-gradient(145deg,#fff 0%,#fbf8ef 100%);box-shadow:0 28px 80px rgba(0,0,0,.35);text-align:center;transform:translateY(18px) scale(.97);transition:.3s}
+    .success-modal.show .success-card{transform:none}
+    .success-icon{display:grid;place-items:center;width:74px;height:74px;margin:0 auto 24px;border-radius:50%;background:var(--navy-900);box-shadow:0 0 0 9px rgba(216,173,88,.14);color:var(--gold-light)}
+    .success-icon svg{width:34px;height:34px}
+    .success-kicker{margin:0 0 9px;color:#ae7e29;font-size:12px;font-weight:900;letter-spacing:.14em;text-transform:uppercase}
+    .success-card h2{margin:0;color:var(--navy-950);font-size:clamp(25px,5vw,32px);letter-spacing:-.04em}
+    .success-card>p{margin:15px auto 23px;color:var(--muted);font-size:15px;line-height:1.75}
+    .success-note{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:23px;padding:12px 14px;border-radius:12px;background:#f1ead8;color:#695327;font-size:13px;font-weight:700}
+    .success-close{width:100%;min-height:52px;border:0;border-radius:11px;background:var(--navy-900);color:#fff;font:inherit;font-weight:900;cursor:pointer}
+    .success-close:hover{background:var(--navy-800)}
 
     @media(max-width:850px){
       .wrap{width:min(100% - 28px,680px)}.section{padding:78px 0}
@@ -334,6 +346,16 @@
       <a class="btn sticky-apply" href="#apply">스터디 신청</a>
     </div>
   </div>
+  <div class="success-modal" id="successModal" role="dialog" aria-modal="true" aria-labelledby="successTitle" aria-hidden="true">
+    <div class="success-card">
+      <div class="success-icon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="m13 25 7 7 15-17" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <p class="success-kicker">Application Complete</p>
+      <h2 id="successTitle">신청이 완료되었습니다</h2>
+      <p>소중한 신청 감사합니다.<br>확인 후 입력하신 연락처로 안내드리겠습니다.</p>
+      <div class="success-note"><span aria-hidden="true">●</span> 스터디 일정과 장소는 개별 안내됩니다.</div>
+      <button class="success-close" id="successClose" type="button">확인</button>
+    </div>
+  </div>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <script>
@@ -342,9 +364,13 @@
     const studyForm = document.getElementById('studyForm');
     const resultFrame = document.getElementById('applicationResult');
     const submitButton = studyForm.querySelector('button[type="submit"]');
+    const successModal = document.getElementById('successModal');
+    const successClose = document.getElementById('successClose');
     let submissionInFlight = false;
 
     function showToast(message){ toast.textContent=message; toast.classList.add('show'); setTimeout(()=>toast.classList.remove('show'),2800); }
+    function openSuccessModal(){ successModal.classList.add('show'); successModal.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; successClose.focus(); }
+    function closeSuccessModal(){ successModal.classList.remove('show'); successModal.setAttribute('aria-hidden','true'); document.body.style.overflow=''; submitButton.focus(); }
     function requestId(){ return window.crypto?.randomUUID?.() || `req-${Date.now()}-${Math.random().toString(16).slice(2)}`; }
     function fillTrackingFields(){
       const params = new URLSearchParams(location.search);
@@ -376,8 +402,11 @@
       submitButton.textContent = '스터디 신청하기 →';
       studyForm.reset();
       fillTrackingFields();
-      showToast('신청이 접수되었습니다. 안내 연락을 기다려 주세요.');
+      openSuccessModal();
     });
+    successClose.addEventListener('click',closeSuccessModal);
+    successModal.addEventListener('click',e=>{ if(e.target===successModal) closeSuccessModal(); });
+    document.addEventListener('keydown',e=>{ if(e.key==='Escape'&&successModal.classList.contains('show')) closeSuccessModal(); });
   </script>
 </body>
 </html>

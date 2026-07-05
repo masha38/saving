@@ -287,16 +287,27 @@
           <p class="section-lead">작은 공부 하나가 앞으로의 자산 선택을 바꾸는 기준이 될 수 있습니다.</p>
           <div class="apply-meta"><span><b>참가비</b>신청자에게 별도 안내</span><span><b>진행</b>약 90분 + 질의응답</span><span><b>대상</b>금융 재테크에 관심 있는 누구나</span><span><b>일정</b>신청자에게 개별 안내</span></div>
         </div>
-        <form class="form" id="studyForm">
+        <form class="form" id="studyForm" method="post" target="applicationResult">
           <h3>스터디 참여 신청</h3>
           <div class="field-row">
             <div class="field"><label for="name">성함 *</label><input id="name" name="name" required placeholder="홍길동"></div>
             <div class="field"><label for="phone">연락처 *</label><input id="phone" name="phone" required inputmode="tel" placeholder="010-0000-0000"></div>
           </div>
           <div class="field"><label for="interest">가장 궁금한 분야 *</label><select id="interest" name="interest" required><option value="">선택해 주세요</option><option>달러 자산</option><option>글로벌 자산관리</option><option>자녀 유학·해외 거주</option><option>은퇴 준비</option><option>장기 자산관리</option></select></div>
-          <label class="agree"><input type="checkbox" required><span>스터디 안내를 위한 개인정보 수집·이용에 동의합니다. 실제 운영 시 개인정보 처리방침과 보유기간을 연결해 주세요.</span></label>
+          <label class="agree"><input type="checkbox" name="consent" value="동의" required><span>스터디 안내를 위한 개인정보 수집·이용에 동의합니다. 실제 운영 시 개인정보 처리방침과 보유기간을 연결해 주세요.</span></label>
+          <input type="hidden" name="request_id">
+          <input type="hidden" name="page_url">
+          <input type="hidden" name="referrer">
+          <input type="hidden" name="user_agent">
+          <input type="hidden" name="utm_source">
+          <input type="hidden" name="utm_medium">
+          <input type="hidden" name="utm_campaign">
+          <input type="hidden" name="utm_content">
+          <input type="hidden" name="utm_term">
+          <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
           <button class="btn submit" type="submit">스터디 신청하기 →</button>
         </form>
+        <iframe name="applicationResult" id="applicationResult" title="신청 처리 결과" hidden></iframe>
       </div>
     </section>
 
@@ -325,9 +336,47 @@
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <script>
+    const APPS_SCRIPT_WEB_APP_URL = 'PASTE_YOUR_APPS_SCRIPT_EXEC_URL_HERE';
     const toast = document.getElementById('toast');
+    const studyForm = document.getElementById('studyForm');
+    const resultFrame = document.getElementById('applicationResult');
+    const submitButton = studyForm.querySelector('button[type="submit"]');
+    let submissionInFlight = false;
+
     function showToast(message){ toast.textContent=message; toast.classList.add('show'); setTimeout(()=>toast.classList.remove('show'),2800); }
-    document.getElementById('studyForm').addEventListener('submit',e=>{e.preventDefault();showToast('신청 폼 연결 전 미리보기입니다. 실제 접수 URL을 연결해 주세요.');});
+    function requestId(){ return window.crypto?.randomUUID?.() || `req-${Date.now()}-${Math.random().toString(16).slice(2)}`; }
+    function fillTrackingFields(){
+      const params = new URLSearchParams(location.search);
+      const values = {
+        request_id: requestId(), page_url: location.href, referrer: document.referrer,
+        user_agent: navigator.userAgent, utm_source: params.get('utm_source') || '',
+        utm_medium: params.get('utm_medium') || '', utm_campaign: params.get('utm_campaign') || '',
+        utm_content: params.get('utm_content') || '', utm_term: params.get('utm_term') || ''
+      };
+      Object.entries(values).forEach(([name,value])=>{ studyForm.elements[name].value=value; });
+    }
+    fillTrackingFields();
+    studyForm.addEventListener('submit',e=>{
+      if(APPS_SCRIPT_WEB_APP_URL.startsWith('PASTE_')){
+        e.preventDefault();
+        showToast('Apps Script 웹앱 URL을 먼저 설정해 주세요.');
+        return;
+      }
+      fillTrackingFields();
+      studyForm.action = APPS_SCRIPT_WEB_APP_URL;
+      submissionInFlight = true;
+      submitButton.disabled = true;
+      submitButton.textContent = '신청 접수 중…';
+    });
+    resultFrame.addEventListener('load',()=>{
+      if(!submissionInFlight) return;
+      submissionInFlight = false;
+      submitButton.disabled = false;
+      submitButton.textContent = '스터디 신청하기 →';
+      studyForm.reset();
+      fillTrackingFields();
+      showToast('신청이 접수되었습니다. 안내 연락을 기다려 주세요.');
+    });
   </script>
 </body>
 </html>

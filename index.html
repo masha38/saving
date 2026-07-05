@@ -132,6 +132,13 @@
     .kakao{background:var(--kakao);color:#191919}.kakao svg{width:20px;height:20px}
     .sticky-apply{background:var(--navy-900);color:#fff}
 
+    .kakao-float{position:fixed;z-index:40;right:22px;bottom:22px;display:flex;align-items:center;gap:11px;min-width:168px;padding:15px 17px;border-radius:16px;background:var(--kakao);color:#241f00;box-shadow:0 12px 30px rgba(18,26,38,.2);transition:transform .2s,box-shadow .2s}
+    .kakao-float:hover{transform:translateY(-3px);box-shadow:0 16px 36px rgba(18,26,38,.26)}
+    .kakao-float svg{flex:0 0 auto;width:27px;height:27px}
+    .kakao-float span{display:grid;gap:2px;line-height:1.15}
+    .kakao-float strong{font-size:16px;font-weight:900}
+    .kakao-float small{font-size:11px;font-weight:700;opacity:.7}
+
     .toast{position:fixed;z-index:50;left:50%;bottom:30px;transform:translate(-50%,20px);padding:15px 20px;border-radius:10px;background:#fff;color:var(--ink);box-shadow:0 15px 45px rgba(0,0,0,.24);opacity:0;pointer-events:none;transition:.25s}
     .toast.show{opacity:1;transform:translate(-50%,0)}
 
@@ -141,7 +148,7 @@
       .hero-image{height:58%;object-position:66% center;inset:72px 0 auto}.hero-content{padding:390px 0 70px}
       .split,.program,.trust-grid,.apply-grid{grid-template-columns:1fr;gap:44px}
       .cards{grid-template-columns:1fr}.card-featured{transform:none}.steps{grid-template-columns:1fr 1fr}
-      .nav{height:64px}.nav-cta{display:none}.sticky{display:block}
+      .nav{height:64px}.nav-cta{display:none}.sticky{display:block}.kakao-float{display:none}
       footer{padding-bottom:100px}
     }
     @media(max-width:540px){
@@ -292,6 +299,11 @@
   </main>
 
   <footer><div class="wrap">본 페이지는 일반적인 금융 및 자산관리 교육 프로그램 안내를 위한 예시입니다. 특정 금융상품의 수익 또는 결과를 보장하지 않으며, 실제 게시 전 운영 주체·진행자·일정·개인정보 처리방침·상품 안내 여부 등 필수 정보를 추가하고 관련 광고 기준을 검토해야 합니다.</div></footer>
+
+  <a class="kakao-float" href="https://open.kakao.com/o/gZWBoBCi" target="_blank" rel="noopener noreferrer" aria-label="카카오톡으로 상담하기">
+    <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 4C8.82 4 3 8.57 3 14.2c0 3.63 2.42 6.82 6.06 8.63l-1.22 4.53c-.11.4.35.72.7.49l5.34-3.52c.69.08 1.4.12 2.12.12 7.18 0 13-4.57 13-10.2S23.18 4 16 4Z"/></svg>
+    <span><strong>카톡 상담</strong><small>편하게 문의하세요</small></span>
+  </a>
 
   <div class="sticky">
     <div class="sticky-inner">

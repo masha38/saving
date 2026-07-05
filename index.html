@@ -295,7 +295,7 @@
 
   <div class="sticky">
     <div class="sticky-inner">
-      <a class="btn kakao" href="#" id="kakaoButton" aria-label="카카오톡 문의하기"><svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 4C8.82 4 3 8.57 3 14.2c0 3.63 2.42 6.82 6.06 8.63l-1.22 4.53c-.11.4.35.72.7.49l5.34-3.52c.69.08 1.4.12 2.12.12 7.18 0 13-4.57 13-10.2S23.18 4 16 4Z"/></svg>카톡 문의</a>
+      <a class="btn kakao" href="https://open.kakao.com/o/gZWBoBCi" id="kakaoButton" target="_blank" rel="noopener noreferrer" aria-label="카카오톡 문의하기"><svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 4C8.82 4 3 8.57 3 14.2c0 3.63 2.42 6.82 6.06 8.63l-1.22 4.53c-.11.4.35.72.7.49l5.34-3.52c.69.08 1.4.12 2.12.12 7.18 0 13-4.57 13-10.2S23.18 4 16 4Z"/></svg>카톡 문의</a>
       <a class="btn sticky-apply" href="#apply">스터디 신청</a>
     </div>
   </div>
@@ -305,7 +305,6 @@
     const toast = document.getElementById('toast');
     function showToast(message){ toast.textContent=message; toast.classList.add('show'); setTimeout(()=>toast.classList.remove('show'),2800); }
     document.getElementById('studyForm').addEventListener('submit',e=>{e.preventDefault();showToast('신청 폼 연결 전 미리보기입니다. 실제 접수 URL을 연결해 주세요.');});
-    document.getElementById('kakaoButton').addEventListener('click',e=>{e.preventDefault();showToast('실제 카카오톡 채널 주소를 연결해 주세요.');});
   </script>
 </body>
 </html>

@@ -144,28 +144,30 @@
     .gift strong{display:block;margin-bottom:4px;color:#7b571a}
 
     .trust{background:var(--paper)}
-    .mentor-card{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:38px;align-items:start;padding:44px;border:1px solid var(--line);border-radius:30px;background:linear-gradient(145deg,#fff 0%,#fbf7ed 100%);box-shadow:0 24px 60px rgba(8,24,45,.08)}
-    .mentor-lead{max-width:780px;margin:0 0 28px;color:#586576;font-size:17px;line-height:1.8}
-    .trust-points{display:grid;gap:18px;margin-top:34px}
-    .trust-point{display:flex;gap:14px;color:#4f5b6b;line-height:1.7}
-    .trust-point b{color:var(--ink)}
-    .dot{flex:none;width:10px;height:10px;margin-top:8px;border-radius:50%;background:var(--gold)}
-    .mentor-highlight{margin-top:28px;padding:22px;border-radius:20px;background:#f5efe2;border:1px solid #e8d9ba}
-    .mentor-highlight h3{margin:0 0 8px;color:var(--navy-950);font-size:22px;letter-spacing:-.03em}
-    .mentor-highlight p{margin:0;color:#596576;line-height:1.75}
-    .media-thumbs{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
-    .media-thumbs img{width:100%;height:142px;object-fit:cover;border-radius:15px;border:1px solid rgba(8,27,51,.12);box-shadow:0 10px 24px rgba(8,24,45,.08)}
-
-    .instructor-panel{padding:26px;border:1px solid rgba(8,27,51,.1);border-radius:24px;background:rgba(255,255,255,.86);box-shadow:0 18px 45px rgba(8,24,45,.07)}
-    .instructor-photo{position:relative;overflow:hidden;width:118px;margin-bottom:18px;border-radius:22px;background:#f6ead2}
-    .instructor-photo img{display:block;width:100%;height:auto;aspect-ratio:1/1;object-fit:cover}
-    .instructor-badge{position:absolute;left:10px;bottom:10px;padding:7px 9px;border-radius:999px;background:rgba(8,27,51,.9);color:#fff;font-size:10px;font-weight:900;letter-spacing:.04em}
-    .instructor-title{margin:7px 0 10px;color:var(--navy-950);font-size:25px;letter-spacing:-.04em;line-height:1.28}
-    .instructor-role{margin:0 0 18px;color:#6a7483;font-size:15px;line-height:1.7}
-    .instructor-list{display:grid;gap:10px;margin:0;padding:0;list-style:none}
-    .instructor-list li{display:flex;gap:10px;align-items:flex-start;color:#3f4b5a;line-height:1.55;font-size:14px;font-weight:700}
-    .instructor-list li::before{content:"✓";flex:none;margin-top:1px;color:#b98931;font-weight:900}
-    .instructor-notice{margin:18px 0 0;color:#8a94a3;font-size:12px;line-height:1.6}
+    .instructor-showcase{padding:44px;border:1px solid var(--line);border-radius:32px;background:#fff;box-shadow:0 26px 70px rgba(8,24,45,.09)}
+    .instructor-main{display:grid;grid-template-columns:360px minmax(0,1fr);gap:42px;align-items:stretch}
+    .profile-card{position:relative;overflow:hidden;padding:30px;border-radius:26px;background:linear-gradient(145deg,var(--navy-900),var(--navy-950));color:#fff}
+    .profile-photo{position:relative;width:138px;margin-bottom:22px;border-radius:24px;overflow:hidden;background:#f6ead2;box-shadow:0 18px 34px rgba(0,0,0,.22)}
+    .profile-photo img{display:block;width:100%;height:auto;aspect-ratio:1/1;object-fit:cover}
+    .profile-badge{position:absolute;left:10px;bottom:10px;padding:7px 9px;border-radius:999px;background:rgba(255,210,87,.95);color:#172033;font-size:10px;font-weight:900;letter-spacing:.04em}
+    .profile-card .eyebrow{color:var(--gold-light)}
+    .profile-card h2{margin:8px 0 14px;color:#fff;font-size:clamp(28px,3.6vw,42px);line-height:1.18;letter-spacing:-.05em}
+    .profile-card p{margin:0;color:#cbd6e3;line-height:1.75}
+    .profile-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+    .profile-tags span{padding:8px 10px;border:1px solid rgba(242,219,155,.25);border-radius:999px;background:rgba(255,255,255,.06);color:#f5dfad;font-size:12px;font-weight:800}
+    .profile-note{margin-top:20px;color:#9facbd!important;font-size:12px!important;line-height:1.6!important}
+    .media-focus{padding:4px 0}
+    .media-focus h3{margin:8px 0 12px;color:var(--navy-950);font-size:clamp(28px,4vw,46px);line-height:1.16;letter-spacing:-.055em}
+    .media-focus>p{margin:0 0 24px;color:#586576;font-size:17px;line-height:1.8}
+    .media-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:16px}
+    .media-card{margin:0;padding:12px;border:1px solid rgba(8,27,51,.1);border-radius:20px;background:#fbfaf6;box-shadow:0 12px 28px rgba(8,24,45,.07)}
+    .media-card img{display:block;width:100%;height:190px;object-fit:cover;border-radius:14px}
+    .media-card figcaption{padding:11px 4px 2px;color:#334053;font-size:13px;font-weight:900;line-height:1.45}
+    .study-principles{display:grid;grid-template-columns:190px 1fr;gap:22px;align-items:start;margin-top:28px;padding-top:24px;border-top:1px solid rgba(8,27,51,.1)}
+    .study-principles h3{margin:5px 0 0;color:var(--navy-950);font-size:22px;letter-spacing:-.03em}
+    .principle-list{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:0;padding:0;list-style:none}
+    .principle-list li{padding:15px 16px;border-radius:16px;background:#f6f1e7;color:#596576;font-size:13px;line-height:1.55}
+    .principle-list b{display:block;margin-bottom:5px;color:var(--ink);font-size:14px}
 
     .apply{background:var(--navy-950);color:#fff}
     .apply-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:70px;align-items:center}
@@ -223,16 +225,18 @@
       .wrap{width:min(100% - 28px,680px)}.section{padding:78px 0}
       .hero{min-height:760px;align-items:flex-end}.hero::before{background:linear-gradient(180deg,rgba(5,18,35,.18),rgba(5,18,35,.84) 38%,rgba(5,18,35,.99) 74%)}
       .hero-image{height:58%;object-position:66% center;inset:72px 0 auto}.hero-content{padding:390px 0 70px}
-      .split,.program,.mentor-card,.apply-grid{grid-template-columns:1fr;gap:34px}
+      .split,.program,.instructor-main,.study-principles,.apply-grid{grid-template-columns:1fr;gap:34px}
       .cards{grid-template-columns:1fr}.card-featured{transform:none}.steps{grid-template-columns:1fr 1fr}
       .nav{height:64px}.nav-cta{display:none}.sticky{display:block}.kakao-float{display:none}
-      .mentor-card{padding:30px}
+      .instructor-showcase{padding:30px}.profile-card{display:grid;grid-template-columns:130px 1fr;gap:22px;align-items:start}.profile-photo{margin-bottom:0}.profile-tags,.profile-note{grid-column:1/-1}
+      .media-grid{grid-template-columns:1fr 1fr}.principle-list{grid-template-columns:1fr}
     }
     @media(max-width:540px){
       .hero{min-height:800px}.hero-content{padding-top:360px}.hero-actions{display:grid}.hero-actions .btn{width:100%}
       .hero-proof{gap:8px 13px}.cards,.steps{grid-template-columns:1fr}.step{min-height:auto}
       .field-row{grid-template-columns:1fr}.form{padding:25px 20px}.session{grid-template-columns:65px 1fr}
-      .media-thumbs{grid-template-columns:1fr}.media-thumbs img{height:auto}
+      .instructor-showcase{padding:22px}.profile-card{display:block;padding:24px}.profile-photo{width:122px;margin-bottom:18px}
+      .media-grid{grid-template-columns:1fr}.media-card img{height:auto}
     }
   </style>
 </head>
@@ -331,42 +335,48 @@
 
     <section class="section trust" id="instructor">
       <div class="wrap">
-        <div class="mentor-card">
-        <div class="mentor-copy">
-          <p class="eyebrow">Study Principle &amp; Instructor</p>
-          <h2 class="section-title">투자보다 먼저,<br>판단하는 힘을 배웁니다</h2>
-          <p class="mentor-lead">유튜브 &lt;삼프로 TV&gt;, &lt;ETF 아는형&gt; 전문 패널 출신 ARPS (은퇴설계전문가) &amp; 금융투자 전문가가 알려주는 슬기로운 금융 스터디입니다. 달러 자산과 글로벌 자산관리를 어렵게 외우는 시간이 아니라, 내 자산을 바라보는 기준을 세우는 시간으로 안내합니다.</p>
-          <div class="trust-points">
-            <div class="trust-point"><span class="dot"></span><span><b>장점과 위험을 함께</b><br>좋은 점만 말하지 않고 환율·비용·유동성 등의 유의사항을 함께 확인합니다.</span></div>
-            <div class="trust-point"><span class="dot"></span><span><b>초보자의 언어로 쉽게</b><br>어려운 금융 용어를 일상적인 사례와 비교표로 풀어 설명합니다.</span></div>
-            <div class="trust-point"><span class="dot"></span><span><b>내 기준을 세우는 공부</b><br>남들이 좋다고 말한 선택보다 나의 목적·기간·위험 감내 수준에 맞는 판단 기준을 정리합니다.</span></div>
+        <div class="instructor-showcase">
+          <div class="instructor-main">
+            <aside class="profile-card" aria-label="메인 강사 프로필">
+              <div class="profile-photo">
+                <img src="assets/instructor-steve-caricature.png" alt="메인 강사 캐리커처 프로필" width="512" height="512" loading="lazy" decoding="async">
+                <span class="profile-badge">PANEL</span>
+              </div>
+              <p class="eyebrow">Main Instructor</p>
+              <h2>삼프로TV·ETF 아는형<br>패널 출신 강사</h2>
+              <p>ARPS (은퇴설계전문가) &amp; 금융투자 전문가가 달러 자산, 글로벌 자산관리, 연금·투자 주제를 일반인의 언어로 정리합니다.</p>
+              <div class="profile-tags">
+                <span>서울대 경제학과</span>
+                <span>ARPS 은퇴설계전문가</span>
+                <span>금융투자 전문가</span>
+                <span>연금 전문 강사</span>
+              </div>
+              <p class="profile-note">※ 메인 강사는 상황에 따라 변경될 수 있습니다.</p>
+            </aside>
+            <div class="media-focus">
+              <p class="eyebrow">Media Appearance</p>
+              <h3>유튜브 전문 패널의 관점으로<br>금융 재테크를 쉽게 봅니다</h3>
+              <p>&lt;삼프로 TV&gt;, &lt;ETF 아는형&gt;에서 다룬 금융 이슈를 바탕으로 부자 파이프라인을 준비하는 실용적인 금융 스터디를 진행합니다.</p>
+              <div class="media-grid" aria-label="강사 미디어 출연 이미지">
+                <figure class="media-card">
+                  <img src="assets/threepro-tv-panel.png" alt="삼프로TV 전문 패널 출연 썸네일" width="280" height="174" loading="lazy" decoding="async">
+                  <figcaption>삼프로TV 전문 패널 출연</figcaption>
+                </figure>
+                <figure class="media-card">
+                  <img src="assets/etf-aneunhyung-panel.jpg" alt="ETF 아는형 전문 패널 출연 썸네일" width="245" height="168" loading="lazy" decoding="async">
+                  <figcaption>ETF 아는형 전문 패널 출연</figcaption>
+                </figure>
+              </div>
+            </div>
           </div>
-          <div class="mentor-highlight">
-            <h3>부자 파이프라인을 준비하는 실용적인 금융 관점</h3>
-            <p>복잡한 금융 이론보다 먼저, 달러 자산과 글로벌 자산관리의 구조·위험·비교 기준을 현실적인 재테크 언어로 공부합니다.</p>
+          <div class="study-principles">
+            <h3>투자보다 먼저,<br>판단 기준</h3>
+            <ul class="principle-list">
+              <li><b>위험까지 함께</b>환율·비용·유동성 등 꼭 볼 기준을 확인합니다.</li>
+              <li><b>쉽게 비교</b>어려운 용어는 사례와 비교표로 풀어 설명합니다.</li>
+              <li><b>내 기준 정리</b>목적·기간·위험 감내 수준에 맞게 바라봅니다.</li>
+            </ul>
           </div>
-          <div class="media-thumbs" aria-label="강사 미디어 출연 이미지">
-            <img src="assets/threepro-tv-panel.png" alt="삼프로TV 전문 패널 출연 썸네일" width="280" height="174" loading="lazy" decoding="async">
-            <img src="assets/etf-aneunhyung-panel.jpg" alt="ETF 아는형 전문 패널 출연 썸네일" width="245" height="168" loading="lazy" decoding="async">
-          </div>
-        </div>
-        <aside class="instructor-panel" aria-label="메인 강사 정보">
-          <div class="instructor-photo">
-            <img src="assets/instructor-steve-caricature.png" alt="메인 강사 캐리커처 프로필" width="512" height="512" loading="lazy" decoding="async">
-            <span class="instructor-badge">3PRO TV</span>
-          </div>
-          <p class="eyebrow">Main Instructor</p>
-          <h3 class="instructor-title">삼프로TV·ETF 아는형 패널 출신 강사</h3>
-          <p class="instructor-role">연금, 투자, 글로벌 자산관리 주제를 초보자의 언어로 정리해 주는 금융 스터디 강사입니다.</p>
-          <ul class="instructor-list">
-            <li>서울대 경제학과 졸업</li>
-            <li>ARPS 은퇴설계전문가</li>
-            <li>금융투자 및 연금 전문 강사</li>
-            <li>AMKO Global 본부장</li>
-            <li>한국투자증권 투자권유대행인</li>
-          </ul>
-          <p class="instructor-notice">※ 메인 강사는 상황에 따라 변경될 수 있습니다.</p>
-        </aside>
         </div>
       </div>
     </section>

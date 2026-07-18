@@ -153,6 +153,19 @@
     .trust-point b{color:var(--ink)}
     .dot{flex:none;width:10px;height:10px;margin-top:8px;border-radius:50%;background:var(--gold)}
 
+    .instructor{background:#fff}
+    .instructor-card{display:grid;grid-template-columns:.82fr 1.18fr;gap:56px;align-items:center;padding:44px;border:1px solid var(--line);border-radius:28px;background:linear-gradient(145deg,#fff 0%,#fbf7ed 100%);box-shadow:0 22px 55px rgba(8,24,45,.08)}
+    .instructor-photo{position:relative;overflow:hidden;border-radius:24px;background:#f6ead2}
+    .instructor-photo img{display:block;width:100%;height:auto;aspect-ratio:1/1;object-fit:cover}
+    .instructor-badge{position:absolute;left:18px;bottom:18px;padding:9px 12px;border-radius:999px;background:rgba(8,27,51,.9);color:#fff;font-size:12px;font-weight:900;letter-spacing:.04em}
+    .instructor-name{margin:8px 0 10px;font-size:clamp(30px,4vw,48px);letter-spacing:-.05em;color:var(--navy-950)}
+    .instructor-role{margin:0 0 25px;color:#6a7483;font-size:17px;line-height:1.7}
+    .instructor-list{display:grid;gap:14px;margin:0;padding:0;list-style:none}
+    .instructor-list li{display:flex;gap:12px;align-items:flex-start;color:#3f4b5a;line-height:1.65;font-weight:700}
+    .instructor-list li::before{content:"✓";flex:none;margin-top:1px;color:#b98931;font-weight:900}
+    .instructor-media{margin-top:18px;padding-top:18px;border-top:1px solid rgba(8,27,51,.1);color:#c12c28;font-weight:900}
+    .instructor-notice{margin:18px 0 0;color:#8a94a3;font-size:12px;line-height:1.6}
+
     .apply{background:var(--navy-950);color:#fff}
     .apply-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:70px;align-items:center}
     .apply .section-lead{color:#b9c6d5}
@@ -209,9 +222,11 @@
       .wrap{width:min(100% - 28px,680px)}.section{padding:78px 0}
       .hero{min-height:760px;align-items:flex-end}.hero::before{background:linear-gradient(180deg,rgba(5,18,35,.18),rgba(5,18,35,.84) 38%,rgba(5,18,35,.99) 74%)}
       .hero-image{height:58%;object-position:66% center;inset:72px 0 auto}.hero-content{padding:390px 0 70px}
-      .split,.program,.trust-grid,.apply-grid{grid-template-columns:1fr;gap:44px}
+      .split,.program,.trust-grid,.instructor-card,.apply-grid{grid-template-columns:1fr;gap:44px}
       .cards{grid-template-columns:1fr}.card-featured{transform:none}.steps{grid-template-columns:1fr 1fr}
       .nav{height:64px}.nav-cta{display:none}.sticky{display:block}.kakao-float{display:none}
+      .instructor-card{padding:30px}
+      .instructor-photo{max-width:360px;margin:auto}
     }
     @media(max-width:540px){
       .hero{min-height:800px}.hero-content{padding-top:360px}.hero-actions{display:grid}.hero-actions .btn{width:100%}
@@ -323,6 +338,31 @@
             <div class="trust-point"><span class="dot"></span><span><b>장점과 위험을 함께</b><br>좋은 점만 말하지 않고 환율·비용·유동성 등의 유의사항을 함께 확인합니다.</span></div>
             <div class="trust-point"><span class="dot"></span><span><b>초보자의 언어로 쉽게</b><br>어려운 금융 용어를 일상적인 사례와 비교표로 풀어 설명합니다.</span></div>
             <div class="trust-point"><span class="dot"></span><span><b>상담은 원하는 분만</b><br>스터디 신청만으로 개별상담이나 상품 가입이 진행되지 않습니다.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section instructor" id="instructor">
+      <div class="wrap">
+        <div class="instructor-card">
+          <div class="instructor-photo">
+            <img src="assets/instructor-steve-caricature.png" alt="메인 강사 신승식 캐리커처 프로필" width="1024" height="1024" loading="lazy" decoding="async">
+            <span class="instructor-badge">MAIN INSTRUCTOR</span>
+          </div>
+          <div>
+            <p class="eyebrow">Main Instructor</p>
+            <h2 class="instructor-name">신승식 Steve, Triple S</h2>
+            <p class="instructor-role">금융투자와 연금, 글로벌 자산관리 주제를 초보자의 언어로 풀어 설명하는 금융 재테크 스터디 메인 강사입니다.</p>
+            <ul class="instructor-list">
+              <li>대원외고, 서울대 경제학과 졸업</li>
+              <li>푸르덴셜생명, 메트라이프생명 Sales &amp; Manager</li>
+              <li>ARPS 은퇴설계전문가, 금융투자 및 연금 전문 강사</li>
+              <li>현 AMKO Global 본부장</li>
+              <li>현 한국투자증권 투자권유대행인</li>
+            </ul>
+            <p class="instructor-media">유튜브 &lt;3PRO TV&gt;, &lt;ETF 아는형&gt; 전문 패널 출연</p>
+            <p class="instructor-notice">※ 메인 강사는 상황에 따라 변경될 수 있습니다.</p>
           </div>
         </div>
       </div>
